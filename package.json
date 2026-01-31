@@ -1,0 +1,30 @@
+{
+  "name": "learnwebgpu",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run install-missing-dependancies && npm run build && npm run serve",
+    "install-missing-dependancies": "npm i",
+    "build": "webpack --config webpack.config.js",
+    "serve": "live-server --cors"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/node": "^22.13.8",
+    "@webgpu/types": "^0.1.54",
+    "gl-matrix": "^3.4.3",
+    "http-server": "^14.1.1",
+    "jquery": "^3.7.1",
+    "ts-loader": "^9.5.2",
+    "ts-shader-loader": "^2.0.2",
+    "typescript": "^5.8.2",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.32"
+  }
+}
