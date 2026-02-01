@@ -72,11 +72,11 @@ export class ObjMesh {
         const lines = file_contents.split("\n");
 
         lines.forEach((line) => {
-            // Trim whitespace to prevent empty strings at start/end
+            
             line = line.trim();
             if(line === "" || line.startsWith("#")) return;
 
-            // Split by any amount of whitespace (tab, space, double space)
+            
             const parts = line.split(/\s+/);
             const type = parts[0];
 
@@ -124,10 +124,7 @@ export class ObjMesh {
     }
 
     read_face_data(parts: string[], result: number[]) {
-        /*
-           parts[0] is "f"
-           parts[1] is v1...
-        */
+        
        const triangle_count = parts.length - 3; 
        for (var i = 0; i < triangle_count; i++) {
             this.read_corner(parts[1], result);
@@ -139,20 +136,17 @@ export class ObjMesh {
     read_corner(vertex_description: string, result: number[]) {
         const v_vt_vn = vertex_description.split("/");
         
-        // 1. POSITION (Always exists in valid OBJ)
-        // OBJ is 1-based, array is 0-based
+        // 1. POSITION 
         const vIdx = parseInt(v_vt_vn[0]) - 1;
         const v = this.v[vIdx];
         
         if (!v) {
-            // Fallback to prevent crash if index is invalid
             result.push(0, 0, 0); 
         } else {
             result.push(v[0], v[1], v[2]);
         }
         
-        // 2. TEXTURE COORDINATES (Optional)
-        // Check if index 1 exists AND is not an empty string (e.g. "f 1//1")
+        // 2. TEXTURE COORDINATES 
         let vt: vec2 = [0, 0];
         if (v_vt_vn.length > 1 && v_vt_vn[1].length > 0) {
             const vtIdx = parseInt(v_vt_vn[1]) - 1;
@@ -162,8 +156,8 @@ export class ObjMesh {
         }
         result.push(vt[0], vt[1]);
         
-        // 3. NORMALS (Optional)
-        let vn: vec3 = [0, 0, 1]; // Default normal pointing Z+
+        // 3. NORMALS 
+        let vn: vec3 = [0, 0, 1]; 
         if (v_vt_vn.length > 2 && v_vt_vn[2].length > 0) {
             const vnIdx = parseInt(v_vt_vn[2]) - 1;
             if (this.vn[vnIdx]) {

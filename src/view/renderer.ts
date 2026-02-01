@@ -412,8 +412,6 @@ export class Renderer {
     async render(renderables: RenderData) {
         if (!this.device || !this.gBufferPipeline) return;
 
-        // FIXED: Only apply jitter if we are path tracing (debugMode === 0).
-        // If we are debugging G-Buffers (pos/normal/albedo), we want a stable image.
         const isRaytracing = this.debugMode === 0;
         const jitterX = isRaytracing ? (Math.random() - 0.5) * 2.0 / this.canvas.width : 0;
         const jitterY = isRaytracing ? (Math.random() - 0.5) * 2.0 / this.canvas.height : 0;
@@ -460,11 +458,6 @@ export class Renderer {
 
         this.frameCount++;
         const params = new ArrayBuffer(32);
-        // Params struct layout:
-        // u32: width, height, debugMode, frameCount (indices 0,1,2,3)
-        // f32: jitterX, jitterY (indices 4,5)
-        // u32: maxBounces (index 6 - originally padding1)
-        // f32: padding2 (index 7)
         
         new Uint32Array(params).set([this.canvas.width, this.canvas.height, this.debugMode, this.frameCount]);
         new Float32Array(params, 16).set([jitterX, jitterY]);
@@ -578,6 +571,6 @@ export class Renderer {
         return name ? this.materialManager.getMaterial(name)?.properties : null;
     }
     
-    // Alias for backwards compatibility
+    
     async makeBindGroup() { return this.makeBindGroups(); }
 }

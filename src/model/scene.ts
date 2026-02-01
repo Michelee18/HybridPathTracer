@@ -14,42 +14,42 @@ export class Scene {
         this.object_data = new Float32Array(16 * 1024); 
 
 
-        // --- 0. The Statue (Center) ---
+        // --- 0. The Statue ---
         this.statues.push(new Statue(
             [0, 0, -2.0],   
             [90, 0, 0],     
             [1.5, 1.5, 1.5] 
         ));
 
-        // --- 1. Floor (White) ---
+        // --- 1. Floor ---
         this.statues.push(new Statue(
             [0, 0, -2.1],     
             [0, 0, 0],
-            [2.0, 2.1, 0.1]   // Wide X/Y, Thin Z
+            [2.0, 2.1, 0.1]   
         ));
 
-        // --- 2. Ceiling (White) ---
+        // --- 2. Ceiling ---
         this.statues.push(new Statue(
             [0, 0, 2.1],      
             [0, 0, 0],
             [2.0, 2.1, 0.1]
         ));
 
-        // --- 3. Back Wall (White) ---
+        // --- 3. Back Wall ---
         this.statues.push(new Statue(
             [2.0, 0, 0],     
             [0, 0, 0],
-            [0.1, 2.0, 2.0]   // Thin X, Wide Y/Z
+            [0.1, 2.0, 2.0]   
         ));
 
-        // --- 4. Left Wall (Red) ---
+        // --- 4. Left Wall ---
         this.statues.push(new Statue(
             [0, 2.0, 0],     
             [0, 0, 0],
-            [2.0, 0.1, 2.0]   // Wide X/Z, Thin Y
+            [2.0, 0.1, 2.0] 
         ));
 
-        // --- 5. Right Wall (Green) ---
+        // --- 5. Right Wall ---
         this.statues.push(new Statue(
             [0, -2.0, 0],      
             [0, 0, 0],

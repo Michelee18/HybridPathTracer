@@ -19,8 +19,6 @@ export class Camera{
 
     }
 
-    // Z AXIS IS UP -- ROTATE AROUND UP VECTOR IS YAW
-    // X AXIS IS HORIZONTAL -- ROTATE AROUND HORIZONTAL VECTOR IS PITCH
 
     update() {
         this.forward = [
@@ -29,10 +27,10 @@ export class Camera{
             Math.sin(Deg2Rad(this.eulers[1]))
         ];
 
-        // Z AXIS DEFINED AS UP VECTOR
+ 
         vec3.cross(this.right, this.forward, [0,0,1]);
 
-        //CORRECTED UP
+
         vec3.cross(this.up, this.right, this.forward);
 
         var target : vec3 = vec3.create();

@@ -20,7 +20,7 @@ export class Statue {
         // 1. Translate
         mat4.translate(this.model, this.model, this.position);
         
-        // 2. Rotate (Order: Y -> Z -> X to match previous behavior)
+        // 2. Rotate
         mat4.rotateY(this.model, this.model, Deg2Rad(this.eulers[1]));
         mat4.rotateZ(this.model, this.model, Deg2Rad(this.eulers[2]));
         mat4.rotateX(this.model, this.model, Deg2Rad(this.eulers[0]));

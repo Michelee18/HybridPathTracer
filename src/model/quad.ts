@@ -19,7 +19,7 @@ update() {
     // 1. Translate
     mat4.translate(this.model, this.model, this.position);
     
-    // 2. Rotate (Order: Z -> Y -> X usually works best for simple Euler)
+    // 2. Rotate 
     mat4.rotateX(this.model, this.model, glMatrix.toRadian(this.rotation[0]));
     mat4.rotateY(this.model, this.model, glMatrix.toRadian(this.rotation[1]));
     mat4.rotateZ(this.model, this.model, glMatrix.toRadian(this.rotation[2]));

@@ -2,20 +2,19 @@ export class TriangleMesh {
 
     buffer: GPUBuffer
     bufferLayout: GPUVertexBufferLayout
-    vertices: Float32Array  // ADD THIS
-    vertexCount: number     // ADD THIS
+    vertices: Float32Array 
+    vertexCount: number     
 
     constructor(device: GPUDevice){
     
-        // Array of 32bit floats: position (3), texCoord (2), normal (3)
-        this.vertices = new Float32Array([  // CHANGED: store as this.vertices
-            // x,    y,    z,    u,   v,   nx,  ny,  nz
-             0.0,  0.0,  0.5,  0.5, 0.0,  1.0, 0.0, 0.0,  // vertex 0 (pointing right)
-             0.0, -0.5, -0.5,  0.0, 1.0,  1.0, 0.0, 0.0,  // vertex 1
-             0.0,  0.5, -0.5,  1.0, 1.0,  1.0, 0.0, 0.0,  // vertex 2
+        
+        this.vertices = new Float32Array([  
+             0.0,  0.0,  0.5,  0.5, 0.0,  1.0, 0.0, 0.0,  
+             0.0, -0.5, -0.5,  0.0, 1.0,  1.0, 0.0, 0.0,  
+             0.0,  0.5, -0.5,  1.0, 1.0,  1.0, 0.0, 0.0, 
         ]);
 
-        this.vertexCount = 3;  // ADD THIS
+        this.vertexCount = 3;  
 
         const usage : GPUBufferUsageFlags = GPUBufferUsage.VERTEX | GPUBufferUsage.COPY_DST;
     
