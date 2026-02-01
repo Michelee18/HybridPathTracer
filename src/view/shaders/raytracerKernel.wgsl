@@ -393,9 +393,6 @@ fn tracePath(seed: ptr<function, u32>, pixel: vec2<u32>, frame: u32, pixelCoords
         let normal = select(-hit.normal, hit.normal, entering);
         let cosTheta = min(abs(dot(-incomingDir, normal)), 1.0);
         
-        // Map specular directly to F0 (base reflectivity)
-        // specular=0.0 -> F0=0.04 (4% like plastic/dielectric)
-        // specular=1.0 -> F0=1.0 (100% perfect mirror)
         let F0 = mix(0.04, 1.0, hit.specular);
         let fresnel = schlick_fresnel(F0, cosTheta);
         

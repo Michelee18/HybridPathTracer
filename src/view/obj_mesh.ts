@@ -18,8 +18,7 @@ export class ObjMesh {
 
     async initialize(device: GPUDevice, url: string) {
         await this.readFile(url);
-        
-        // Safety check: if read failed or file empty
+
         if (!this.vertices || this.vertices.length === 0) {
             console.error(`Mesh ${url} failed to load or is empty.`);
             this.vertexCount = 0;

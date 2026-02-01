@@ -521,7 +521,6 @@ export class App {
         col2.className = 'sidebar-column';
         sideSection.appendChild(col2);
 
-        // FIXED: Added container for scrollable content
         const statsPanel = document.createElement('div');
         statsPanel.className = 'panel half-height';
         statsPanel.innerHTML = `
@@ -704,7 +703,6 @@ export class App {
         settingsMount.appendChild(debugModeSelect);
 
         // === BOUNCE SLIDER ===
-        // Added max bounces slider
         const bouncesContainer = document.createElement('div');
         bouncesContainer.className = 'slider-group';
         bouncesContainer.innerHTML = `
